@@ -26,25 +26,6 @@ CREATE TABLE department (
     PRIMARY KEY (id)
 );
 
-ALTER TABLE employee
-ADD CONSTRAINT role_id
-    FOREIGN KEY (role_id)
-        REFERENCES role (id)
-        ON DELETE NO ACTION
-        ON UPDATE NO ACTION,
-ADD CONSTRAINT manager_id    
-    FOREIGN KEY (manager_id)
-        REFERENCES employee (id)
-        ON DELETE NO ACTION
-        ON UPDATE NO ACTION;
-
-ALTER TABLE role
-ADD CONSTRAINT department_id
-    FOREIGN KEY (department_id)
-        REFERENCES department (id)
-        ON DELETE NO ACTION
-        ON UPDATE NO ACTION;
-
 INSERT INTO department
 (name) VALUES 
 ("Sales"),
@@ -53,15 +34,14 @@ INSERT INTO department
 ("Legal"),
 ("Marketing");
 
-
 INSERT INTO role
 (title, salary, department_id) VALUES 
 ("CEO", 89000, 1),
-("Manager", 30000, 2),
+("Manager", 30000, 2);
 
 INSERT INTO employee
 (first_name, last_name, role_id, manager_id) VALUES
-("Jake", "Columbus", 5,null),
-("Richard", "Smith", 2,1),
+("Jake", "Columbus", 5, null),
+("Richard", "Smith", 2, 1);
 
 
